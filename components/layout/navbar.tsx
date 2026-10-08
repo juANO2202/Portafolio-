@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion, useScroll, useSpring, useTransform } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Container } from "@/components/ui/container";
@@ -20,6 +20,8 @@ export function Navbar() {
   const socialLinks = getSocialLinks();
   const { scrollY } = useScroll();
   const glassOpacity = useTransform(scrollY, [0, 64], [0, 1]);
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, { stiffness: 200, damping: 30, restDelta: 0.001 });
 
   return (
     <header className="sticky top-0 z-50">
@@ -28,6 +30,12 @@ export function Navbar() {
         aria-hidden="true"
         className="glass absolute inset-0 border-b border-line"
         style={{ opacity: glassOpacity }}
+      />
+      {/* Progreso de lectura: línea del acento que crece con el scroll (solo transform). */}
+      <motion.div
+        aria-hidden="true"
+        className="absolute inset-x-0 bottom-0 h-px origin-left bg-accent"
+        style={{ scaleX: progress }}
       />
       <Container className="relative flex h-16 items-center justify-between gap-2">
         <Link

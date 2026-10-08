@@ -2,34 +2,45 @@ import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { CopyEmailButton } from "@/components/ui/copy-email-button";
 import { MailIcon } from "@/components/ui/icons";
-import { RevealGroup, RevealItem } from "@/components/ui/reveal";
-import { SectionHeading } from "@/components/ui/section-heading";
+import { DrawLine, RevealGroup, RevealItem } from "@/components/ui/reveal";
 import { profile } from "@/data/profile";
 
 export function Contact() {
   return (
     <section id="contacto" aria-labelledby="contacto-titulo" className="scroll-mt-16 py-24">
       <Container>
-        <RevealGroup className="surface space-y-8 px-6 py-12 sm:px-12 sm:py-16">
+        <DrawLine />
+        <RevealGroup className="space-y-10 pt-16">
           <RevealItem>
-            <SectionHeading
+            <h2
               id="contacto-titulo"
-              eyebrow="Contacto"
-              title="Hablemos."
-              description="Estoy abierto a prácticas y nuevos proyectos. Escríbeme y respondo lo antes posible."
-            />
+              className="text-4xl font-semibold tracking-[-0.03em] text-balance sm:text-6xl"
+            >
+              Hablemos.
+            </h2>
           </RevealItem>
 
           <RevealItem>
-            <p className="text-lg font-medium tracking-tight break-all sm:text-xl">{profile.email}</p>
+            <p className="max-w-[48ch] text-lg text-muted text-pretty">
+              Estoy abierto a prácticas y nuevos proyectos. Escríbeme y respondo lo antes posible.
+            </p>
+          </RevealItem>
+
+          <RevealItem>
+            <a
+              href={`mailto:${profile.email}`}
+              className="inline-block rounded-md text-2xl font-medium tracking-tight break-all text-accent underline decoration-accent/40 underline-offset-8 transition-[text-decoration-color] duration-150 hover:decoration-accent sm:text-4xl"
+            >
+              {profile.email}
+            </a>
           </RevealItem>
 
           <RevealItem className="flex flex-wrap gap-3">
-            <CopyEmailButton email={profile.email} />
-            <Button href={`mailto:${profile.email}`} variant="secondary">
-              <MailIcon width={18} height={18} />
-              Escribir un correo
+            <Button href={`mailto:${profile.email}`}>
+              <MailIcon />
+              Escríbeme
             </Button>
+            <CopyEmailButton email={profile.email} />
           </RevealItem>
         </RevealGroup>
       </Container>

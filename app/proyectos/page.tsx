@@ -27,7 +27,6 @@ export default function ProyectosPage() {
         <RevealItem>
           <SectionHeading
             id="proyectos-titulo"
-            eyebrow="Proyectos"
             title="Lo que he construido."
             description="Una selección de mi trabajo, con el código abierto cuando es posible."
           />

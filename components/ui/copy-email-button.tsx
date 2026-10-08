@@ -33,7 +33,7 @@ export function CopyEmailButton({ email }: { email: string }) {
 
   return (
     <>
-      <Button onClick={copy} className="min-w-44">
+      <Button onClick={copy} variant="secondary" className="min-w-44">
         <AnimatePresence initial={false} mode="wait">
           <motion.span
             key={state}

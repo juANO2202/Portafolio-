@@ -7,6 +7,8 @@ export interface Profile {
   bio: string;
   email: string;
   availability: string;
+  /** Opcional: ruta dentro de /public (p. ej. "/juan.jpg"). Sin foto se muestra un monograma. */
+  photo?: string;
   links: {
     github: string;
     /** Opcional: si no existe, no se renderiza ningún ícono ni enlace. */

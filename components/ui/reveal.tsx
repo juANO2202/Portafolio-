@@ -50,6 +50,20 @@ export function RevealGroup({
   );
 }
 
+/** Línea divisoria que se dibuja de izquierda a derecha al entrar en el viewport. */
+export function DrawLine({ className = "" }: { className?: string }) {
+  return (
+    <motion.div
+      aria-hidden="true"
+      className={`h-px origin-left bg-line ${className}`}
+      initial={{ scaleX: 0 }}
+      whileInView={{ scaleX: 1 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.9, ease: [0.77, 0, 0.175, 1] }}
+    />
+  );
+}
+
 export function RevealItem({
   children,
   className,

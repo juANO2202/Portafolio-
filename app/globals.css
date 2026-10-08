@@ -3,6 +3,10 @@
 /* Dark-first: :root es el tema oscuro; `.light` lo sobrescribe (next-themes, attribute="class"). */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/*
+ * Sistema visual: neutros zinc + UN solo acento (esmeralda).
+ * Formas: botones, chips y avatares son píldora; contenedores usan radius-2xl.
+ */
 :root {
   color-scheme: dark;
   --background: #09090b; /* zinc-950 */
@@ -13,10 +17,10 @@
   --line: rgb(255 255 255 / 0.1);
   --glass: rgb(0 0 0 / 0.5);
   --pill: rgb(255 255 255 / 0.1);
-  --ring: #e4e4e7;
+  --ring: #34d399;
   --glow: rgb(255 255 255 / 0.1); /* brillo que sigue al cursor */
-  --glow-a: rgb(99 102 241 / 0.22); /* gradiente del hero */
-  --glow-b: rgb(14 165 233 / 0.16);
+  --accent: #34d399; /* emerald-400: 11:1 sobre el fondo */
+  --accent-soft: rgb(52 211 153 / 0.12);
 }
 
 .light {
@@ -29,10 +33,10 @@
   --line: rgb(0 0 0 / 0.1);
   --glass: rgb(255 255 255 / 0.6);
   --pill: rgb(0 0 0 / 0.06);
-  --ring: #27272a;
+  --ring: #047857;
   --glow: rgb(0 0 0 / 0.06);
-  --glow-a: rgb(99 102 241 / 0.16);
-  --glow-b: rgb(14 165 233 / 0.14);
+  --accent: #047857; /* emerald-700: 5.5:1 sobre el fondo */
+  --accent-soft: rgb(4 120 87 / 0.1);
 }
 
 @theme inline {
@@ -42,8 +46,44 @@
   --color-card: var(--card);
   --color-line: var(--line);
   --color-pill: var(--pill);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  /* Curvas con carácter: las nativas de CSS son demasiado débiles. */
+  --ease-snap: cubic-bezier(0.23, 1, 0.32, 1); /* entradas y hover */
+  --ease-move: cubic-bezier(0.77, 0, 0.175, 1); /* movimiento en pantalla */
+}
+
+/* Lista de habilidades: al enfocar una fila, las demás se atenúan (solo con puntero fino). */
+@media (hover: hover) and (pointer: fine) {
+  .skill-list:hover .skill-row:not(:hover) {
+    opacity: 0.4;
+  }
+}
+
+/* Retícula de puntos: da textura al hero sin competir con el contenido. */
+@utility bg-dots {
+  background-image: radial-gradient(var(--line) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Resplandor del acento que deriva despacio (decorativo; se detiene con movimiento reducido). */
+@utility aurora {
+  background-image: radial-gradient(closest-side, var(--accent-soft), transparent);
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: aurora-drift 18s var(--ease-move) infinite alternate;
+  }
+}
+
+@keyframes aurora-drift {
+  from {
+    transform: translate3d(-6%, -4%, 0) scale(1);
+  }
+  to {
+    transform: translate3d(8%, 6%, 0) scale(1.15);
+  }
 }
 
 /* Superficie de cristal (navbar). La opacidad y el desenfoque se degradan a un fondo sólido. */
@@ -78,6 +118,18 @@
   }
 }
 
+/* Superficie teñida con el acento (celdas destacadas del bento). */
+@utility surface-accent {
+  background-color: var(--accent-soft);
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+  border-radius: var(--radius-2xl);
+
+  @media (prefers-contrast: more) {
+    background-color: var(--card-solid);
+    border-color: var(--accent);
+  }
+}
+
 html {
   background-color: var(--background);
 }
@@ -102,5 +154,5 @@ body {
 }
 
 ::selection {
-  background-color: var(--pill);
+  background-color: var(--accent-soft);
 }
