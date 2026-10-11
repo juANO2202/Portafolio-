@@ -7,6 +7,8 @@ export interface Profile {
   bio: string;
   email: string;
   availability: string;
+  /** Ciudad y país que se muestran en el mapa de /contacto (no pongas tu dirección exacta). */
+  location: string;
   /** Opcional: ruta dentro de /public (p. ej. "/juan.jpg"). Sin foto se muestra un monograma. */
   photo?: string;
   links: {

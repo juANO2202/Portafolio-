@@ -6,5 +6,7 @@ export const siteConfig = {
 
 export const navItems = [
   { href: "/", label: "Inicio" },
+  { href: "/servicios", label: "Servicios" },
   { href: "/proyectos", label: "Proyectos" },
+  { href: "/contacto", label: "Contacto" },
 ] as const;

@@ -1,14 +1,23 @@
 import {
   ArrowRight,
+  AppWindow,
   ArrowUpRight,
   Check,
+  ClockCountdown,
+  Code,
   Copy,
+  Handshake,
   EnvelopeSimple,
   Folder,
   GithubLogo,
   LinkedinLogo,
+  MapPin,
   Moon,
+  PaperPlaneTilt,
+  PencilRuler,
   Sun,
+  Tag,
+  Wrench,
 } from "@phosphor-icons/react/dist/ssr";
 import type { IconProps as PhosphorProps } from "@phosphor-icons/react";
 import type { ComponentType } from "react";
@@ -36,3 +45,12 @@ export const CheckIcon = icon(Check);
 export const ArrowRightIcon = icon(ArrowRight);
 export const ExternalLinkIcon = icon(ArrowUpRight);
 export const FolderIcon = icon(Folder);
+export const MapPinIcon = icon(MapPin);
+export const CodeIcon = icon(Code);
+export const AppWindowIcon = icon(AppWindow);
+export const WrenchIcon = icon(Wrench);
+export const DesignIcon = icon(PencilRuler);
+export const SendIcon = icon(PaperPlaneTilt);
+export const ClockIcon = icon(ClockCountdown);
+export const HandshakeIcon = icon(Handshake);
+export const TagIcon = icon(Tag);

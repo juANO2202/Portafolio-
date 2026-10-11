@@ -36,9 +36,9 @@ export function Contact() {
           </RevealItem>
 
           <RevealItem className="flex flex-wrap gap-3">
-            <Button href={`mailto:${profile.email}`}>
+            <Button href="/contacto">
               <MailIcon />
-              Escríbeme
+              Hablemos de tu proyecto
             </Button>
             <CopyEmailButton email={profile.email} />
           </RevealItem>
