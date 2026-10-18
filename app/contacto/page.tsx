@@ -1,5 +1,5 @@
-import { ContactForm } from "@/components/sections/contact-form";
-import { LocationMap } from "@/components/sections/location-map";
+import { ContactForm } from "@/components/contact/contact-form";
+import { LocationMap } from "@/components/contact/location-map";
 import { Container } from "@/components/ui/container";
 import { CopyEmailButton } from "@/components/ui/copy-email-button";
 import { ClockIcon, HandshakeIcon, TagIcon } from "@/components/ui/icons";

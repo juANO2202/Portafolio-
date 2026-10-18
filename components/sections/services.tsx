@@ -1,4 +1,4 @@
-import { ServiceCard } from "@/components/sections/service-card";
+import { ServiceCard } from "@/components/cards/service-card";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { ArrowRightIcon } from "@/components/ui/icons";

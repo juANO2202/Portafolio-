@@ -1,4 +1,4 @@
-import { CertificateCard } from "@/components/sections/certificate-card";
+import { CertificateCard } from "@/components/cards/certificate-card";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { EmptyState } from "@/components/ui/empty-state";

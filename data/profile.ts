@@ -13,7 +13,7 @@ export const profile: Profile = {
   email: "juan.pashma2202@gmail.com",
   availability: "Disponible para prácticas y nuevos proyectos",
   location: "Ambato, Tungurahua, Ecuador",
-  photo: "/juan.png", // coloca tu foto en /public (formato vertical 4:5 recomendado)
+  photo: "/images/juan.png", // coloca tu foto en /public (formato vertical 4:5 recomendado)
   links: {
     github: "https://github.com/juANO2202",
     // linkedin: "https://www.linkedin.com/in/tu-usuario",

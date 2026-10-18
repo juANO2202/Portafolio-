@@ -48,13 +48,15 @@ npm run dev                  # http://localhost:3000
 ```text
 app/                  Rutas (App Router): home, /servicios, /proyectos, /contacto, /api/contact, Open Graph
 components/
-  layout/             Navbar y footer
-  sections/           Hero, about, skills, services, contact, contact-form, location-map, project-card…
+  layout/             Navbar, footer y providers
+  sections/           Secciones de la home: hero, about, skills, services, contact, portrait
+  cards/              Tarjetas: project-card, service-card, certificate-card
+  contact/            Formulario de contacto y mapa de ubicación
   ui/                 Piezas reutilizables: button, reveal, theme-toggle, iconos…
 data/                 Todo el contenido editable (perfil, about, skills, servicios, proyectos, navegación)
 lib/                  Utilidades: tokens de animación (motion.ts), enlaces, metadata
 types/                Tipos compartidos
-public/               Estáticos; las capturas de proyectos van en public/projects/
+public/               Estáticos: images/ (foto), projects/ (capturas), certificates/ (certificados)
 ```
 
 ## Dónde editar el contenido

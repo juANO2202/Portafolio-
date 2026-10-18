@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
-import { Providers } from "@/components/providers";
+import { Providers } from "@/components/layout/providers";
 import { profile } from "@/data/profile";
 import { siteConfig } from "@/data/site";
 import { defaultTitle } from "@/lib/metadata";

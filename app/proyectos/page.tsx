@@ -1,4 +1,4 @@
-import { ProjectCard } from "@/components/sections/project-card";
+import { ProjectCard } from "@/components/cards/project-card";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { EmptyState } from "@/components/ui/empty-state";
