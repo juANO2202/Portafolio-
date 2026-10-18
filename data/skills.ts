@@ -7,6 +7,10 @@ export const skillCategories: SkillCategory[] = [
     items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Motion"],
   },
   {
+    title: "Backend",
+    items: [".NET 8", "C#", "APIs REST", "SQL Server", "Microservicios", "Docker", "JWT"],
+  },
+  {
     title: "Fundamentos web",
     items: ["HTML semántico", "CSS", "JavaScript", "Accesibilidad", "Diseño responsive"],
   },

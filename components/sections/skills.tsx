@@ -17,7 +17,7 @@ export function Skills() {
             <SectionHeading
               id="habilidades-titulo"
               title="Con lo que construyo."
-              description="Las herramientas y fundamentos que uso a diario."
+              description="Las herramientas que uso a diario, tanto en lo que se ve (frontend) como en lo que no se ve (backend)."
             />
           </RevealItem>
 
