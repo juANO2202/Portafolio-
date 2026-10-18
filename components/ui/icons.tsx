@@ -2,6 +2,7 @@ import {
   ArrowRight,
   AppWindow,
   ArrowUpRight,
+  Certificate,
   Check,
   ClockCountdown,
   Code,
@@ -54,3 +55,4 @@ export const SendIcon = icon(PaperPlaneTilt);
 export const ClockIcon = icon(ClockCountdown);
 export const HandshakeIcon = icon(Handshake);
 export const TagIcon = icon(Tag);
+export const CertificateIcon = icon(Certificate);
