@@ -10,7 +10,7 @@ import { createPageMetadata } from "@/lib/metadata";
 export const metadata = createPageMetadata({
   title: "Servicios",
   description:
-    "Desarrollo web a medida, apps y sistemas de gestión, mantenimiento y mejoras, diseño UI y consultoría.",
+    "Tu página web, programas a tu medida, arreglo y mejora de sitios existentes, y orientación para empezar tu proyecto.",
   path: "/servicios",
 });
 
@@ -22,7 +22,7 @@ export default function ServiciosPage() {
           <SectionHeading
             id="servicios-titulo"
             title="Servicios."
-            description="Convierto ideas en productos web claros y rápidos. Estos son los servicios que ofrezco."
+            description="Convierto tus ideas en páginas y programas que funcionan. Esto es lo que puedo hacer por ti."
           />
         </RevealItem>
 

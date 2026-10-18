@@ -15,7 +15,7 @@ export function Services() {
             <SectionHeading
               id="servicios-titulo"
               title="Cómo puedo ayudarte."
-              description="Servicios para llevar tu idea a la web, de la primera maqueta al sitio publicado."
+              description="Te ayudo a llevar tu idea a internet, desde el primer boceto hasta la página funcionando."
             />
           </RevealItem>
 

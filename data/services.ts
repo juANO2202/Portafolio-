@@ -4,30 +4,50 @@ import type { Service } from "@/types/content";
 export const services: Service[] = [
   {
     id: "web",
-    title: "Desarrollo web a medida",
+    title: "Tu página web",
     description:
-      "Sitios y aplicaciones web rápidos, accesibles y pensados para que tu proyecto se vea profesional desde el primer día.",
-    features: ["Landing pages y portafolios", "Diseño responsive", "SEO y rendimiento", "Next.js y React"],
+      "Creo la página de tu negocio o tu marca para que te encuentren en internet, se vea bien en el celular y transmita confianza.",
+    features: [
+      "Página de presentación o portafolio",
+      "Se ve bien en celular y computador",
+      "Aparece en Google",
+      "Carga rápido",
+    ],
   },
   {
     id: "app",
-    title: "Apps y sistemas de gestión",
+    title: "Programas a tu medida",
     description:
-      "Herramientas a la medida de tu negocio: paneles, simuladores y sistemas que ordenan y automatizan tu trabajo.",
-    features: ["Dashboards y paneles", "Formularios y flujos", "Cálculos y simuladores", "Integración con APIs"],
+      "Si hoy llevas tu trabajo en papel o en Excel, te hago un sistema propio para ordenarlo y ahorrar tiempo: usuarios, datos guardados y reportes.",
+    features: [
+      "Sistemas con inicio de sesión",
+      "Base de datos y servidor (backend)",
+      "Formularios, cálculos y reportes en PDF",
+      "Conexión con otros servicios",
+    ],
   },
   {
     id: "maintenance",
-    title: "Mantenimiento y mejoras",
+    title: "Arreglar o mejorar tu web",
     description:
-      "Corrijo errores, mejoro la velocidad y actualizo sitios que ya existen sin que tengas que empezar de cero.",
-    features: ["Corrección de errores", "Optimización de velocidad", "Nuevas funciones", "Rediseño de secciones"],
+      "¿Ya tienes una página que falla, va lenta o se ve anticuada? La reviso y la arreglo sin que tengas que empezar de cero.",
+    features: [
+      "Corrijo lo que no funciona",
+      "La hago más rápida",
+      "Agrego funciones nuevas",
+      "Renuevo su diseño",
+    ],
   },
   {
     id: "design",
-    title: "Diseño UI y consultoría",
+    title: "Te oriento antes de empezar",
     description:
-      "Te ayudo a aterrizar la idea: prototipos de interfaz y asesoría técnica para elegir bien antes de construir.",
-    features: ["Prototipos de interfaz", "Revisión de usabilidad", "Asesoría de tecnologías", "Plan del proyecto"],
+      "Si tienes una idea pero no sabes por dónde empezar, la conversamos: te explico las opciones sin tecnicismos y armamos un plan claro.",
+    features: [
+      "Te explico qué necesitas y qué no",
+      "Boceto de cómo se verá",
+      "Plan con pasos y tiempos",
+      "Recomendación de herramientas",
+    ],
   },
 ];
