@@ -8,11 +8,11 @@ const icons: Record<SocialLinkId, ComponentType<SVGProps<SVGSVGElement>>> = {
   email: MailIcon,
 };
 
+/** Hereda el color del texto (currentColor), así sirve sobre crema y sobre verde bosque. */
 export const iconButtonClass =
-  "inline-flex size-10 items-center justify-center rounded-full text-muted " +
-  "transition-[color,background-color,transform] duration-150 " +
-  "hover:bg-pill hover:text-foreground " +
-  "active:scale-95 active:duration-75"; // feedback inmediato al presionar
+  "inline-flex size-10 items-center justify-center rounded-full opacity-70 " +
+  "transition-[opacity,background-color,transform] duration-150 " +
+  "hover:bg-current/10 hover:opacity-100 active:scale-95 active:duration-75";
 
 export function IconLink({ link }: { link: SocialLink }) {
   const Icon = icons[link.id];

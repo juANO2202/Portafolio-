@@ -5,6 +5,7 @@ export const alt = `${profile.name} · ${profile.role}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
+// Misma identidad que el sitio: crema, texto verde bosque y un acento verde.
 export default function OpengraphImage() {
   return new ImageResponse(
     (
@@ -16,16 +17,23 @@ export default function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "center",
           padding: 96,
-          background: "#09090b",
-          backgroundImage:
-            "radial-gradient(circle at 80% 10%, rgba(99,102,241,0.28), transparent 55%)",
-          color: "#f4f4f5",
+          background: "#f4f0e6",
+          color: "#0b1a13",
         }}
       >
-        <div style={{ fontSize: 76, fontWeight: 600, letterSpacing: -2, lineHeight: 1.05 }}>
+        <div style={{ width: 84, height: 10, borderRadius: 5, background: "#1b6a47" }} />
+        <div
+          style={{
+            marginTop: 44,
+            fontSize: 96,
+            fontWeight: 700,
+            letterSpacing: -5,
+            lineHeight: 1,
+          }}
+        >
           {profile.name}
         </div>
-        <div style={{ marginTop: 28, fontSize: 36, color: "#a1a1aa" }}>{profile.role}</div>
+        <div style={{ marginTop: 30, fontSize: 38, color: "#4a5850" }}>{profile.role}</div>
       </div>
     ),
     size,

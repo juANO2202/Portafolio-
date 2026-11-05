@@ -1,51 +1,68 @@
 import type { Service } from "@/types/content";
 
-/** Edita libremente: cada servicio se renderiza tal cual en el home y en /servicios. */
+/**
+ * Edita libremente: cada servicio se renderiza tal cual en la sección Servicios.
+ * Tono: profesional y claro. Se explica en lenguaje sencillo y el término técnico va entre
+ * paréntesis o en las etiquetas, para que lo entienda tanto quien contrata como quien conoce el tema.
+ * Las tecnologías mencionadas salen de data/skills.ts.
+ */
 export const services: Service[] = [
   {
-    id: "web",
-    title: "Tu página web",
+    id: "app",
+    title: "Software a medida",
     description:
-      "Creo la página de tu negocio o tu marca para que te encuentren en internet, se vea bien en el celular y transmita confianza.",
+      "Desarrollo el sistema completo que tu negocio necesita: la interfaz que usan las personas y, por detrás, el servidor y la base de datos que lo hacen funcionar.",
     features: [
-      "Página de presentación o portafolio",
-      "Se ve bien en celular y computador",
-      "Aparece en Google",
-      "Carga rápido",
+      "Sistemas de gestión y aplicaciones web",
+      "Acceso con usuario y contraseña (JWT)",
+      "Formularios, cálculos y reportes en PDF",
+      "Base de datos (SQL Server)",
     ],
   },
   {
-    id: "app",
-    title: "Programas a tu medida",
+    id: "backend",
+    title: "Servicios y APIs",
     description:
-      "Si hoy llevas tu trabajo en papel o en Excel, te hago un sistema propio para ordenarlo y ahorrar tiempo: usuarios, datos guardados y reportes.",
+      "Construyo la parte que no se ve: servidores y servicios ordenados, seguros y listos para crecer, que conectan tus sistemas entre sí y con otras herramientas.",
     features: [
-      "Sistemas con inicio de sesión",
-      "Base de datos y servidor (backend)",
-      "Formularios, cálculos y reportes en PDF",
-      "Conexión con otros servicios",
+      ".NET 8 y C#",
+      "APIs REST",
+      "Microservicios",
+      "Contenedores con Docker",
+    ],
+  },
+  {
+    id: "web",
+    title: "Sitios y aplicaciones web",
+    description:
+      "Interfaces claras, rápidas y accesibles para tu negocio o marca, bien adaptadas tanto a celular como a computador y visibles en buscadores.",
+    features: [
+      "Sitio de presentación o portafolio",
+      "React, Next.js y TypeScript",
+      "Adaptable a celular y computador (responsive)",
+      "Carga rápida",
     ],
   },
   {
     id: "maintenance",
-    title: "Arreglar o mejorar tu web",
+    title: "Mejora y mantenimiento",
     description:
-      "¿Ya tienes una página que falla, va lenta o se ve anticuada? La reviso y la arreglo sin que tengas que empezar de cero.",
+      "Reviso y mejoro software que ya existe y presenta fallas, funciona lento o quedó desactualizado, sin necesidad de empezar desde cero.",
     features: [
-      "Corrijo lo que no funciona",
-      "La hago más rápida",
-      "Agrego funciones nuevas",
-      "Renuevo su diseño",
+      "Corrección de errores",
+      "Mayor velocidad y rendimiento",
+      "Nuevas funcionalidades",
+      "Renovación del diseño",
     ],
   },
   {
     id: "design",
-    title: "Te oriento antes de empezar",
+    title: "Asesoría y planificación",
     description:
-      "Si tienes una idea pero no sabes por dónde empezar, la conversamos: te explico las opciones sin tecnicismos y armamos un plan claro.",
+      "Si tienes una idea pero no sabes por dónde empezar, la analizamos juntos: te explico las opciones con un lenguaje claro y definimos un plan de trabajo.",
     features: [
-      "Te explico qué necesitas y qué no",
-      "Boceto de cómo se verá",
+      "Análisis de lo que realmente necesitas",
+      "Boceto previo del resultado",
       "Plan con pasos y tiempos",
       "Recomendación de herramientas",
     ],

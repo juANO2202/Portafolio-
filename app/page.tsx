@@ -1,8 +1,13 @@
-import { About } from "@/components/sections/about";
+import { Intro } from "@/components/intro/intro";
+import { Footer } from "@/components/layout/footer";
+import { SiteHeader } from "@/components/layout/site-header";
 import { Contact } from "@/components/sections/contact";
+import { Credentials } from "@/components/sections/credentials";
 import { Hero } from "@/components/sections/hero";
+import { Projects } from "@/components/sections/projects";
 import { Services } from "@/components/sections/services";
-import { Skills } from "@/components/sections/skills";
+import { Story } from "@/components/sections/story";
+import { aboutHighlights, aboutParagraphs } from "@/data/about";
 import { createPageMetadata } from "@/lib/metadata";
 
 export const metadata = createPageMetadata({ path: "/" });
@@ -10,11 +15,17 @@ export const metadata = createPageMetadata({ path: "/" });
 export default function HomePage() {
   return (
     <>
-      <Hero />
-      <About />
-      <Skills />
-      <Services />
-      <Contact />
+      <Intro />
+      <SiteHeader />
+      <main id="contenido">
+        <Hero />
+        <Story title="Cómo trabajo." paragraphs={aboutParagraphs} highlights={aboutHighlights} />
+        <Projects />
+        <Services />
+        <Credentials />
+        <Contact />
+      </main>
+      <Footer />
     </>
   );
 }

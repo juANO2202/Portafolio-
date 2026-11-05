@@ -4,10 +4,13 @@ export const siteConfig = {
   locale: "es_ES",
 } as const;
 
+/** La página es una sola: cada enlace lleva a una sección (el id existe en app/page.tsx). */
 export const navItems = [
-  { href: "/", label: "Inicio" },
-  { href: "/servicios", label: "Servicios" },
-  { href: "/proyectos", label: "Proyectos" },
-  { href: "/certificados", label: "Certificados" },
-  { href: "/contacto", label: "Contacto" },
+  { id: "inicio", label: "Inicio" },
+  { id: "proyectos", label: "Proyectos" },
+  { id: "servicios", label: "Servicios" },
+  { id: "certificados", label: "Certificados" },
+  { id: "contacto", label: "Contacto" },
 ] as const;
+
+export type SectionId = (typeof navItems)[number]["id"] | "historia";

@@ -1,19 +1,18 @@
 # Portafolio · Juan Carlos Pashma Alvarez
 
-Portafolio personal para presentar mi trabajo y ofrecer servicios de desarrollo web. Incluye home
-(hero, sobre mí, habilidades, servicios, contacto) y páginas de **servicios**, **proyectos** y
-**contacto** con formulario y mapa. Dark-first con tema claro, animaciones con springs y soporte de
-`prefers-reduced-motion`.
+Portafolio personal de una sola página: intro animada, hero con retrato, historia fijada al scroll con partículas en canvas, proyectos, servicios, certificados y contacto (formulario y mapa). Bloques crema y verde bosque, animaciones con springs y soporte de `prefers-reduced-motion`.
 
-**Stack:** Next.js (App Router) · React · TypeScript estricto · Tailwind CSS v4 · Motion · next-themes · Phosphor Icons · Resend
+**Stack:** Next.js (App Router) · React · TypeScript estricto · Tailwind CSS v4 · Motion · Phosphor Icons · Resend
 
 ## Características
 
-- **Servicios:** resumen en el home y página `/servicios` con desarrollo web a medida, apps y sistemas de gestión, mantenimiento y mejoras, y diseño UI y consultoría.
-- **Contacto:** página `/contacto` con formulario (nombre, email, asunto, mensaje), canales directos y mapa de Google con la ciudad.
+- **Servicios:** software a medida, servicios y APIs, sitios y aplicaciones web, mejora y mantenimiento, y asesoría y planificación.
+- **Contacto:** sección con formulario (nombre, email, asunto, mensaje), canales directos y mapa de Google con la ciudad.
 - **Formulario seguro:** validación en cliente y servidor, campo trampa contra bots y HTML escapado en el correo.
-- **Proyectos:** galería con tarjetas y capturas.
-- **Accesible y responsive:** HTML semántico, foco visible, tema claro/oscuro y movimiento reducido.
+- **Proyectos:** filas con maqueta de navegador y capturas reales.
+- **Historia con partículas:** sección fijada al scroll con figuras de software (interfaz, red y código) dibujadas en canvas.
+- **Accesible y responsive:** HTML semántico, foco visible y movimiento reducido (sin intro ni animaciones continuas).
+- **Una sola página:** las URLs antiguas (`/proyectos`, `/servicios`, `/certificados`, `/contacto`) redirigen a su sección.
 
 ## Empezar
 

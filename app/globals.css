@@ -1,53 +1,34 @@
 @import "tailwindcss";
 
-/* Dark-first: :root es el tema oscuro; `.light` lo sobrescribe (next-themes, attribute="class"). */
-@custom-variant dark (&:where(.dark, .dark *));
-
 /*
- * Sistema visual: neutros zinc + UN solo acento (esmeralda).
- * Formas: botones, chips y avatares son píldora; contenedores usan radius-2xl.
+ * Sistema visual: bloques de color alternados (crema y verde bosque) con UN solo acento verde.
+ * Es una decisión de composición, no un tema: la página no tiene modo claro/oscuro; cada sección
+ * declara su tono con data-tone="light|dark".
+ * Formas: tarjetas de 24px, botones y chips en píldora. Nada más.
  */
 :root {
-  color-scheme: dark;
-  --background: #09090b; /* zinc-950 */
-  --foreground: #f4f4f5; /* zinc-100 */
-  --muted: #a1a1aa; /* zinc-400 */
-  --card: rgb(24 24 27 / 0.4); /* zinc-900/40 */
-  --card-solid: #18181b; /* zinc-900 */
-  --line: rgb(255 255 255 / 0.1);
-  --glass: rgb(0 0 0 / 0.5);
-  --pill: rgb(255 255 255 / 0.1);
-  --ring: #34d399;
-  --glow: rgb(255 255 255 / 0.1); /* brillo que sigue al cursor */
-  --accent: #34d399; /* emerald-400: 11:1 sobre el fondo */
-  --accent-soft: rgb(52 211 153 / 0.12);
-}
-
-.light {
-  color-scheme: light;
-  --background: #fafafa;
-  --foreground: #18181b;
-  --muted: #52525b; /* zinc-600: contraste AA sobre fondo claro */
-  --card: rgb(255 255 255 / 0.7);
-  --card-solid: #ffffff;
-  --line: rgb(0 0 0 / 0.1);
-  --glass: rgb(255 255 255 / 0.6);
-  --pill: rgb(0 0 0 / 0.06);
-  --ring: #047857;
-  --glow: rgb(0 0 0 / 0.06);
-  --accent: #047857; /* emerald-700: 5.5:1 sobre el fondo */
-  --accent-soft: rgb(4 120 87 / 0.1);
+  --cream: #f4f0e6;
+  --cream-2: #e9e4d6; /* chips y líneas sobre crema */
+  --ink: #0b1a13; /* texto sobre crema */
+  --ink-muted: #4a5850; /* 6:1 sobre crema */
+  --leaf: #1b6a47; /* acento sobre crema: 5.6:1 */
+  --forest: #06110d;
+  --forest-2: #0d1f18; /* tarjetas sobre bosque */
+  --mint: #3ecf8e; /* acento sobre bosque: 10:1 */
+  --mist: #9db1a6; /* texto secundario sobre bosque: 8:1 */
+  --ring: #1b6a47;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-muted: var(--muted);
-  --color-card: var(--card);
-  --color-line: var(--line);
-  --color-pill: var(--pill);
-  --color-accent: var(--accent);
-  --color-accent-soft: var(--accent-soft);
+  --color-cream: var(--cream);
+  --color-cream-2: var(--cream-2);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-leaf: var(--leaf);
+  --color-forest: var(--forest);
+  --color-forest-2: var(--forest-2);
+  --color-mint: var(--mint);
+  --color-mist: var(--mist);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   /* Curvas con carácter: las nativas de CSS son demasiado débiles. */
@@ -55,83 +36,8 @@
   --ease-move: cubic-bezier(0.77, 0, 0.175, 1); /* movimiento en pantalla */
 }
 
-/* Lista de habilidades: al enfocar una fila, las demás se atenúan (solo con puntero fino). */
-@media (hover: hover) and (pointer: fine) {
-  .skill-list:hover .skill-row:not(:hover) {
-    opacity: 0.4;
-  }
-}
-
-/* Retícula de puntos: da textura al hero sin competir con el contenido. */
-@utility bg-dots {
-  background-image: radial-gradient(var(--line) 1px, transparent 1px);
-  background-size: 28px 28px;
-}
-
-/* Resplandor del acento que deriva despacio (decorativo; se detiene con movimiento reducido). */
-@utility aurora {
-  background-image: radial-gradient(closest-side, var(--accent-soft), transparent);
-
-  @media (prefers-reduced-motion: no-preference) {
-    animation: aurora-drift 18s var(--ease-move) infinite alternate;
-  }
-}
-
-@keyframes aurora-drift {
-  from {
-    transform: translate3d(-6%, -4%, 0) scale(1);
-  }
-  to {
-    transform: translate3d(8%, 6%, 0) scale(1.15);
-  }
-}
-
-/* Superficie de cristal (navbar). La opacidad y el desenfoque se degradan a un fondo sólido. */
-@utility glass {
-  background-color: var(--glass);
-  backdrop-filter: blur(12px) saturate(180%);
-
-  @media (prefers-reduced-transparency: reduce) {
-    background-color: var(--background);
-    backdrop-filter: none;
-  }
-
-  @media (prefers-contrast: more) {
-    background-color: var(--background);
-    backdrop-filter: none;
-  }
-}
-
-/* Tarjeta semitransparente con borde fino. */
-@utility surface {
-  background-color: var(--card);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-2xl);
-
-  @media (prefers-reduced-transparency: reduce) {
-    background-color: var(--card-solid);
-  }
-
-  @media (prefers-contrast: more) {
-    background-color: var(--card-solid);
-    border-color: var(--muted);
-  }
-}
-
-/* Superficie teñida con el acento (celdas destacadas del bento). */
-@utility surface-accent {
-  background-color: var(--accent-soft);
-  border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
-  border-radius: var(--radius-2xl);
-
-  @media (prefers-contrast: more) {
-    background-color: var(--card-solid);
-    border-color: var(--accent);
-  }
-}
-
 html {
-  background-color: var(--background);
+  background-color: var(--cream);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -141,18 +47,98 @@ html {
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: var(--cream);
+  color: var(--ink);
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Mientras corre la intro la página no se desplaza. */
+html[data-intro="running"] {
+  overflow: hidden;
 }
 
 :focus-visible {
   outline: 2px solid var(--ring);
-  outline-offset: 2px;
-  border-radius: 0.375rem;
+  outline-offset: 3px;
+  border-radius: 0.5rem;
+}
+
+[data-tone="dark"] :focus-visible {
+  outline-color: var(--mint);
 }
 
 ::selection {
-  background-color: var(--accent-soft);
+  background-color: color-mix(in srgb, var(--mint) 45%, transparent);
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Titular gigante: peso 700, tracking muy cerrado. */
+@utility display {
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+}
+
+/* Etiqueta mono en versalitas: marca el tipo de dato, no decora. */
+@utility mono-label {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.6875rem;
+  line-height: 1.2;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* Cristal del header (aproximación web de un material translúcido). */
+@utility glass-light {
+  background-color: rgb(244 240 230 / 0.74);
+  backdrop-filter: blur(18px) saturate(160%);
+
+  @media (prefers-reduced-transparency: reduce) {
+    background-color: var(--cream);
+    backdrop-filter: none;
+  }
+}
+
+@utility glass-dark {
+  background-color: rgb(6 17 13 / 0.7);
+  backdrop-filter: blur(18px) saturate(160%);
+
+  @media (prefers-reduced-transparency: reduce) {
+    background-color: var(--forest);
+    backdrop-filter: none;
+  }
+}
+
+/* Flotación suave de los iconos del hero (decorativa; se detiene con movimiento reducido). */
+@keyframes float-y {
+  from {
+    transform: translate3d(0, -6px, 0);
+  }
+  to {
+    transform: translate3d(0, 8px, 0);
+  }
+}
+
+@utility float {
+  @media (prefers-reduced-motion: no-preference) {
+    animation: float-y var(--float-duration, 5s) ease-in-out infinite alternate;
+    animation-delay: var(--float-delay, 0s);
+  }
+}
+
+/* Quien ya vio la intro en esta sesión, o prefiere movimiento reducido, no ve el telón. */
+html[data-intro="seen"] .intro-overlay {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-overlay {
+    display: none;
+  }
 }

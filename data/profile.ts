@@ -9,7 +9,7 @@ export const profile: Profile = {
   shortName: "Juan Pashma",
   initials: "JP",
   role: "Estudiante de Ingeniería en Software",
-  bio: "Estudiante de Ingeniería en Software que construye aplicaciones web claras, accesibles y con atención al detalle.",
+  bio: "Estudiante de Ingeniería en Software que desarrolla aplicaciones y sistemas completos, desde el servidor hasta la interfaz, con atención al detalle.",
   email: "juan.pashma2202@gmail.com",
   availability: "Disponible para prácticas y nuevos proyectos",
   location: "Ambato, Tungurahua, Ecuador",

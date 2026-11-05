@@ -5,13 +5,13 @@ import type { ReactNode } from "react";
 import { revealTransition } from "@/lib/motion";
 
 /**
- * Entrada fade + slide (y: 20 → 0) con spring sin rebote y opacidad con fade corto.
+ * Entrada fade + slide + enfoque (y: 24 → 0, blur 6px → 0) con spring sin rebote.
  * Con prefers-reduced-motion, MotionConfig (reducedMotion="user") anula el desplazamiento
- * y solo queda el fade.
+ * y solo quedan los cambios de opacidad.
  */
 export const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: revealTransition() },
+  hidden: { opacity: 0, y: 24, filter: "blur(6px)" },
+  visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: revealTransition() },
 };
 
 interface RevealGroupProps {
@@ -47,20 +47,6 @@ export function RevealGroup({
     >
       {children}
     </motion.div>
-  );
-}
-
-/** Línea divisoria que se dibuja de izquierda a derecha al entrar en el viewport. */
-export function DrawLine({ className = "" }: { className?: string }) {
-  return (
-    <motion.div
-      aria-hidden="true"
-      className={`h-px origin-left bg-line ${className}`}
-      initial={{ scaleX: 0 }}
-      whileInView={{ scaleX: 1 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.9, ease: [0.77, 0, 0.175, 1] }}
-    />
   );
 }
 

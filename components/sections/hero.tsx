@@ -1,33 +1,18 @@
 "use client";
 
-import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-  type Variants,
-} from "motion/react";
-import { Fragment, useRef } from "react";
-import { Portrait } from "@/components/sections/portrait";
+import { motion, useReducedMotion, type Variants } from "motion/react";
+import Image from "next/image";
+import { TechOrbit } from "@/components/sections/tech-orbit";
 import { Button } from "@/components/ui/button";
 import { ArrowRightIcon } from "@/components/ui/icons";
-import { Container } from "@/components/ui/container";
-import { RevealGroup, RevealItem } from "@/components/ui/reveal";
 import { profile } from "@/data/profile";
+import { useIntroDone } from "@/lib/intro-store";
+import { easeSnap } from "@/lib/motion";
 
 // Máscara editorial: cada palabra sube desde detrás de una línea invisible.
 const wordVariants: Variants = {
-  hidden: { y: "110%", opacity: 0 },
-  visible: {
-    y: "0%",
-    opacity: 1,
-    transition: { y: { type: "spring", bounce: 0, duration: 0.7 }, opacity: { duration: 0.25 } },
-  },
-};
-
-const underlineVariants: Variants = {
-  hidden: { scaleX: 0 },
-  visible: { scaleX: 1, transition: { duration: 0.8, delay: 0.5, ease: [0.77, 0, 0.175, 1] } },
+  hidden: { y: "108%" },
+  visible: { y: "0%", transition: { type: "spring", bounce: 0, duration: 0.9 } },
 };
 
 const headlineVariants: Variants = {
@@ -35,123 +20,131 @@ const headlineVariants: Variants = {
   visible: { transition: { staggerChildren: 0.07 } },
 };
 
-// Cada palabra es [texto, resaltada]. El resaltado usa el acento, en la misma tipografía.
-const headline: ReadonlyArray<readonly [string, boolean]> = [
-  ["Interfaces", false],
-  ["que", false],
-  ["se", false],
-  ["entienden", false],
-  ["a", true],
-  ["la", true],
-  ["primera.", true],
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 18, filter: "blur(5px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.7, ease: easeSnap },
+  },
+};
+
+// Tu nombre real, partido en dos líneas: las dos primeras palabras y el resto.
+const nameWords = profile.name.split(" ");
+const lines = [
+  { words: nameWords.slice(0, 2), accent: false },
+  { words: nameWords.slice(2).map((w, i, a) => (i === a.length - 1 ? `${w}.` : w)), accent: true },
 ];
 
 export function Hero() {
-  const ref = useRef<HTMLElement>(null);
+  const introDone = useIntroDone();
   const reduce = useReducedMotion();
-
-  // Profundidad: al bajar, el retrato se mueve más lento que el texto y este se desvanece.
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const textY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, -48]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
-  const portraitY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, 72]);
+  const state = introDone ? "visible" : "hidden";
 
   return (
     <section
-      ref={ref}
+      id="inicio"
+      data-tone="light"
       aria-labelledby="hero-titulo"
-      className="relative isolate flex min-h-[calc(100dvh-4rem)] items-center py-16"
+      className="relative overflow-x-clip bg-cream pt-28 pb-20 sm:pt-32 lg:pb-28"
     >
-      {/* Fondo: retícula con máscara radial + resplandor del acento. Solo decorativo. */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 overflow-hidden [mask-image:radial-gradient(ellipse_70%_60%_at_60%_40%,black,transparent)]"
-      >
-        <div className="bg-dots absolute inset-0" />
-        <div className="aurora absolute top-1/4 right-[8%] size-[34rem] will-change-transform" />
-      </div>
-      <Container className="relative">
-        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
-          <motion.div className="lg:col-span-7" style={{ y: textY, opacity: textOpacity }}>
-            <RevealGroup inView={false} stagger={0.1} delay={0.1} className="space-y-6">
-              <RevealItem>
-                <p className="inline-flex items-center gap-2.5 rounded-full border border-line bg-pill px-3.5 py-1.5 text-sm text-muted">
-                  <span className="relative flex size-2">
-                    <span
-                      aria-hidden="true"
-                      className="absolute inline-flex size-full rounded-full bg-accent opacity-60 motion-safe:animate-ping"
-                    />
-                    <span className="relative inline-flex size-2 rounded-full bg-accent" />
+      <div className="mx-auto grid min-h-[calc(100dvh-8rem)] w-full max-w-6xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-12 lg:gap-6">
+        <div className="space-y-8 lg:col-span-7">
+          <motion.h1
+            id="hero-titulo"
+            variants={headlineVariants}
+            initial="hidden"
+            animate={state}
+            className="display text-[clamp(2.5rem,5.4vw,4.75rem)]"
+          >
+            {lines.map(({ words, accent }, line) => (
+              <span key={line} className="block lg:whitespace-nowrap">
+                {words.map((word, i) => (
+                  <span
+                    key={`${word}-${i}`}
+                    className="-mb-[0.16em] inline-block overflow-hidden pb-[0.16em] align-bottom"
+                  >
+                    <motion.span
+                      variants={wordVariants}
+                      className={`inline-block ${accent ? "text-leaf" : ""}`}
+                    >
+                      {word}
+                      {i < words.length - 1 ? " " : ""}
+                    </motion.span>
                   </span>
-                  {profile.availability}
-                </p>
-              </RevealItem>
-
-              <motion.h1
-                id="hero-titulo"
-                variants={headlineVariants}
-                className="text-5xl leading-[1.05] font-semibold tracking-[-0.035em] text-balance sm:text-6xl lg:text-7xl"
-              >
-                {headline.map(([word, accent], i) => (
-                  <Fragment key={`${word}-${i}`}>
-                    <span className="relative inline-block">
-                      <span className="-mb-[0.12em] inline-block overflow-hidden pb-[0.12em] align-bottom">
-                        <motion.span
-                          variants={wordVariants}
-                          className={`inline-block ${accent ? "text-accent" : ""}`}
-                        >
-                          {word}
-                        </motion.span>
-                      </span>
-                      {i === headline.length - 1 && (
-                        <motion.span
-                          aria-hidden="true"
-                          variants={underlineVariants}
-                          className="absolute inset-x-0 -bottom-1 h-[0.05em] origin-left rounded-full bg-accent/70"
-                        />
-                      )}
-                    </span>{" "}
-                  </Fragment>
                 ))}
-              </motion.h1>
-
-              <RevealItem>
-                <p className="max-w-[48ch] text-lg text-muted text-pretty sm:text-xl">
-                  {profile.bio}
-                </p>
-              </RevealItem>
-
-              <RevealItem className="flex flex-wrap gap-3 pt-2">
-                <Button href="/proyectos">
-                  Ver proyectos
-                  <ArrowRightIcon className="transition-transform duration-200 ease-snap group-hover:translate-x-1" />
-                </Button>
-                <Button href="#contacto" variant="secondary">
-                  Escríbeme
-                </Button>
-              </RevealItem>
-            </RevealGroup>
-          </motion.div>
+              </span>
+            ))}
+          </motion.h1>
 
           <motion.div
-            className="mx-auto w-full max-w-sm lg:col-span-5 lg:max-w-none lg:justify-self-end lg:pl-8"
-            style={{ y: portraitY }}
-            initial={
-              reduce
-                ? { opacity: 0 }
-                : { opacity: 0, y: 24, clipPath: "inset(100% 0% 0% 0% round 1rem)" }
-            }
-            animate={{ opacity: 1, y: 0, clipPath: "inset(0% 0% 0% 0% round 1rem)" }}
-            transition={{
-              y: { type: "spring", bounce: 0, duration: 0.8, delay: 0.25 },
-              opacity: { duration: 0.3, delay: 0.25 },
-              clipPath: { duration: 0.9, delay: 0.25, ease: [0.77, 0, 0.175, 1] },
-            }}
+            variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1, delayChildren: 0.45 } } }}
+            initial="hidden"
+            animate={state}
+            className="space-y-8"
           >
-            <Portrait />
+            <motion.p variants={fadeUp} className="max-w-[34ch] text-xl text-ink/90 text-pretty sm:text-2xl">
+              {profile.bio}
+            </motion.p>
+
+            <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-3">
+              <Button href="#proyectos">
+                Explorar proyectos
+                <ArrowRightIcon className="rotate-90 transition-transform duration-200 ease-snap group-hover:translate-y-0.5" />
+              </Button>
+              <Button href="#contacto" variant="secondary">
+                Hablemos
+              </Button>
+            </motion.div>
+
+            <motion.p variants={fadeUp} className="mono-label text-ink-muted">
+              {profile.location}
+              <br />
+              {profile.availability}
+            </motion.p>
           </motion.div>
         </div>
-      </Container>
+
+        <div className="mx-auto w-full max-w-md lg:col-span-5 lg:max-w-none">
+          <TechOrbit show={introDone}>
+            <motion.figure
+              initial={reduce ? { opacity: 0 } : { opacity: 0, y: 40, clipPath: "inset(12% 8% 0% 8% round 2rem)" }}
+              animate={
+                introDone
+                  ? { opacity: 1, y: 0, clipPath: "inset(0% 0% 0% 0% round 2rem)" }
+                  : undefined
+              }
+              transition={{
+                y: { type: "spring", bounce: 0, duration: 1, delay: 0.2 },
+                opacity: { duration: 0.5, delay: 0.2 },
+                clipPath: { duration: 1.1, delay: 0.2, ease: easeSnap },
+              }}
+              className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-cream-2 shadow-[0_40px_80px_-30px_rgba(6,17,13,0.4)]"
+            >
+              {profile.photo ? (
+                <Image
+                  src={profile.photo}
+                  alt={`Retrato de ${profile.name}`}
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 40vw, 90vw"
+                  className="object-cover object-[50%_20%]"
+                />
+              ) : (
+                <div
+                  role="img"
+                  aria-label={`Monograma de ${profile.name}`}
+                  className="flex size-full items-center justify-center"
+                >
+                  <span className="display text-[9rem] text-leaf select-none">{profile.initials}</span>
+                </div>
+              )}
+              <figcaption className="sr-only">{profile.name}</figcaption>
+            </motion.figure>
+          </TechOrbit>
+        </div>
+      </div>
     </section>
   );
 }

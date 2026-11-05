@@ -2,7 +2,7 @@ import type { Highlight } from "@/types/content";
 
 /** Texto de la sección "Sobre mí": edítalo con tu propia voz. */
 export const aboutParagraphs: string[] = [
-  "Soy estudiante de Ingeniería en Software y me interesa construir aplicaciones web que se entiendan desde el primer vistazo.",
+  "Soy estudiante de Ingeniería en Software y me interesa construir sistemas completos, desde el servidor y la base de datos hasta la interfaz, que se entiendan desde el primer vistazo.",
   "Cuido los detalles que casi nadie nota: la accesibilidad, la jerarquía visual y el movimiento con propósito. Son los que hacen que una interfaz se sienta bien hecha.",
 ];
 
