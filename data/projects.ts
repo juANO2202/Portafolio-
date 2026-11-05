@@ -24,4 +24,13 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/juANO2202/SimuladordePrestamos",
     featured: true,
   },
+  {
+    title: "Oromedios",
+    description:
+      "Sitio web de Oromedios, radio online desde Ambato, Ecuador. Landing page responsive con reproductor en directo, secciones de programación (clásicos, noticias y entretenimiento) y contacto.",
+    tags: ["HTML5", "CSS3", "JavaScript"],
+    image: "/projects/oromedios.png",
+    githubUrl: "https://github.com/juANO2202/OroMedios",
+    liveUrl: "https://oromedios.com/",
+  },
 ];
