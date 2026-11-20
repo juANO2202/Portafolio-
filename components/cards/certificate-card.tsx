@@ -40,7 +40,7 @@ export function CertificateCard({
       <div className="space-y-1">
         <h3 className="text-xl font-bold tracking-[-0.03em] text-balance">{title}</h3>
         <p className="mono-label text-ink-muted">
-          {issuer} / {date}
+          {date ? `${issuer} / ${date}` : issuer}
         </p>
       </div>
 

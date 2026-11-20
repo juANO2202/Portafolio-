@@ -14,4 +14,11 @@ import type { Certificate } from "@/types/certificate";
  *   credentialUrl: "https://...",       // verificación en línea (opcional)
  * }
  */
-export const certificates: Certificate[] = [];
+export const certificates: Certificate[] = [
+  {
+    title: "Programación Java de cero a básico (32 horas)",
+    issuer: "IEEE UTA Student Branch · Computer Society",
+    image: "/certificates/java-ieee-uta.jpg",
+    file: "/certificates/java-ieee-uta.jpg",
+  },
+];
