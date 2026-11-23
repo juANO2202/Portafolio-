@@ -4,7 +4,7 @@ import { motion, useReducedMotion, type Variants } from "motion/react";
 import Image from "next/image";
 import { TechOrbit } from "@/components/sections/tech-orbit";
 import { Button } from "@/components/ui/button";
-import { ArrowRightIcon } from "@/components/ui/icons";
+import { ArrowRightIcon, DownloadIcon } from "@/components/ui/icons";
 import { profile } from "@/data/profile";
 import { useIntroDone } from "@/lib/intro-store";
 import { easeSnap } from "@/lib/motion";
@@ -96,6 +96,17 @@ export function Hero() {
               <Button href="#contacto" variant="secondary">
                 Hablemos
               </Button>
+              {profile.cv && (
+                <Button
+                  href={profile.cv}
+                  download="CV-Juan-Pashma-Alvarez.pdf"
+                  variant="secondary"
+                  aria-label="Descargar currículum en PDF"
+                >
+                  <DownloadIcon />
+                  Descargar CV
+                </Button>
+              )}
             </motion.div>
 
             <motion.p variants={fadeUp} className="mono-label text-ink-muted">

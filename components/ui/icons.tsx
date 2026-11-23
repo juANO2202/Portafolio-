@@ -8,6 +8,7 @@ import {
   ClockCountdown,
   Code,
   Copy,
+  DownloadSimple,
   Handshake,
   EnvelopeSimple,
   Eye,
@@ -49,6 +50,7 @@ export const SunIcon = icon(Sun);
 export const MoonIcon = icon(Moon);
 export const CopyIcon = icon(Copy);
 export const CheckIcon = icon(Check);
+export const DownloadIcon = icon(DownloadSimple);
 export const ArrowRightIcon = icon(ArrowRight);
 export const ArrowLeftIcon = icon(ArrowLeft);
 export const ExternalLinkIcon = icon(ArrowUpRight);

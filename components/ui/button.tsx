@@ -15,6 +15,8 @@ interface BaseProps {
 
 interface LinkButtonProps extends BaseProps {
   href: string;
+  /** Nombre de archivo sugerido: el navegador descarga el enlace en vez de abrirlo. */
+  download?: string;
 }
 
 interface ActionButtonProps extends BaseProps {
@@ -68,6 +70,7 @@ export function Button(props: ButtonProps) {
   return (
     <motion.a
       href={props.href}
+      download={props.download}
       {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       {...shared}
     >

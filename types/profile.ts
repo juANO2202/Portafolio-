@@ -11,6 +11,8 @@ export interface Profile {
   location: string;
   /** Opcional: ruta dentro de /public (p. ej. "/juan.jpg"). Sin foto se muestra un monograma. */
   photo?: string;
+  /** Opcional: PDF del currículum dentro de /public. Si existe, el hero muestra "Descargar CV". */
+  cv?: string;
   links: {
     github: string;
     /** Opcional: si no existe, no se renderiza ningún ícono ni enlace. */

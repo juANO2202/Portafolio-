@@ -13,6 +13,7 @@ export const profile: Profile = {
   availability: "Disponible para prácticas y nuevos proyectos",
   location: "Ambato, Tungurahua, Ecuador",
   photo: "/images/juan.png", // coloca tu foto en /public (formato vertical 4:5 recomendado)
+  cv: "/cv/CV-Juan-Pashma-Alvarez.pdf",
   links: {
     github: "https://github.com/juANO2202",
     linkedin: "https://www.linkedin.com/in/juan-carlos-pashma-alvarez-72406720a/",
