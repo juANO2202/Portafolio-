@@ -2,7 +2,6 @@ import type { Profile } from "@/types/profile";
 
 /**
  * Datos personales: edita solo este archivo.
- * Para agregar LinkedIn después, descomenta la línea `linkedin`.
  */
 export const profile: Profile = {
   name: "Juan Carlos Pashma Alvarez",
@@ -16,6 +15,6 @@ export const profile: Profile = {
   photo: "/images/juan.png", // coloca tu foto en /public (formato vertical 4:5 recomendado)
   links: {
     github: "https://github.com/juANO2202",
-    // linkedin: "https://www.linkedin.com/in/tu-usuario",
+    linkedin: "https://www.linkedin.com/in/juan-carlos-pashma-alvarez-72406720a/",
   },
 };
