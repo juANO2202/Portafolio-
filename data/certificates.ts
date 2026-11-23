@@ -16,6 +16,13 @@ import type { Certificate } from "@/types/certificate";
  */
 export const certificates: Certificate[] = [
   {
+    title: "Fundamentos de Linux (Linux Essentials)",
+    issuer: "Cisco Networking Academy · Universidad Técnica de Ambato",
+    date: "Diciembre 2025",
+    image: "/certificates/linux-essentials-cisco.jpg",
+    file: "/certificates/linux-essentials-cisco.pdf",
+  },
+  {
     title: "Programación Java de cero a básico (32 horas)",
     issuer: "IEEE UTA Student Branch · Computer Society",
     image: "/certificates/java-ieee-uta.jpg",
