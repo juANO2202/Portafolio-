@@ -25,6 +25,14 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    title: "LMS inteligente con asistente de IA",
+    description:
+      "Proyecto en equipo de 3 sobre Moodle: el docente sube su sílabo, la IA propone el curso y luego responde en lenguaje natural con los datos reales. Mi parte fue el backend de IA, datos y analítica en NestJS: extracción del sílabo, chat con herramientas y seudonimización, indicadores, señales de dificultad y recomendaciones pedagógicas.",
+    tags: ["NestJS", "TypeScript", "Zod", "Jest", "Moodle", "LLM"],
+    image: "/projects/lms-asistente-ia.jpg",
+    githubUrl: "https://github.com/kiramman-mp3/sistema-gestion-aprendizaje-IA",
+  },
+  {
     title: "Oromedios",
     description:
       "Sitio web de Oromedios, radio online desde Ambato, Ecuador. Landing page responsive con reproductor en directo, secciones de programación (clásicos, noticias y entretenimiento) y contacto.",
